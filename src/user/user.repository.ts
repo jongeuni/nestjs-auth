@@ -6,7 +6,9 @@ import { UserCreateDto } from './dto/user.create.dto';
 
 @Injectable()
 export class UserRepository {
-  constructor(@InjectModel(User.name) readonly userModel: Model<UserDocument>) {}
+  constructor(
+    @InjectModel(User.name) readonly userModel: Model<UserDocument>
+  ) {}
 
   async save(user: UserCreateDto) {
     await new this.userModel(user).save();

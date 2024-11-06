@@ -1,5 +1,6 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
+// you can use class-validator
 @Schema()
 export class User {
   @Prop()
