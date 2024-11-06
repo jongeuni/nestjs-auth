@@ -1,8 +1,9 @@
-## Auth Service with Nest.js + Mongoose
-다음의 기술 스팩을 이용하여 Auth 서비스를 개발합니다. </br>
+💬 I promise you a code that is easy to understand and contains only the core.
 
+
+## Auth Service with Nest.js + Mongoose
 This project develops an authentication service using the following technologies:</br>
-`Nest.js` `Mongoose`
+`Nest.js` `Mongoose` `JWT`
 
 
 ### What Does This Project Do?
@@ -16,6 +17,7 @@ This project develops an authentication service using the following technologies
 1. This can help those who are new to the project and need a guide to the Nest.
 2. You know the basic usage of mongoose, even aggravate.
 3. You will also be able to understand the fundamentals related to authentication.
+4. It is a project with an easy structure.
 
 ### How to Contribute
 Please submit a pull request to the main branch with a clear description of your changes.</br>
@@ -23,6 +25,7 @@ Please submit a pull request to the main branch with a clear description of your
 ✅ Adding new features is encourage
 —> just keep the code straightforward.</br>
 ✅ Feedback for better readability is always appreciated.</br>
+✅ If you press the star⭐️, it gives you a lot of strength.
 
 ### Questions?
 If you have questions, please tag help wanted or question in the GitHub Issues tab.
