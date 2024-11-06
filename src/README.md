@@ -21,3 +21,6 @@ Currently, it only includes the auth service, so only the user domain exists.
 User registration and deletion can be found in the user domain, while login and token-related logic can be found in the auth domain.
 
 I hope my code is helpful to those who may not be familiar with development.
+
+### swagger
+Use the function of the swagger to a minimum.
