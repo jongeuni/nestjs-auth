@@ -6,10 +6,14 @@ import { Password } from './schema/password';
 import { UserNotExistException } from '../exception/user.not-exist.exception';
 import { UserBadCredentialException } from '../exception/user.bad-credential.exception';
 import { User } from './schema/user.schema';
+import { JwtUtil } from '../jwt/jwt.util';
 
 @Injectable()
 export class UserService {
-  constructor(private readonly userRepository: UserRepository) {}
+  constructor(
+    private readonly userRepository: UserRepository,
+    private readonly jwtUtil: JwtUtil
+  ) {}
 
   async create(dto: UserCreateDto) {
     await this.userRepository.save(dto);
@@ -21,6 +25,10 @@ export class UserService {
     await this.userCompareCheck(user, dto.password);
 
     // create jwt
+    const [accessToken, refreshToken] = await Promise.all([
+      this.jwtUtil.createAccessToken(user.id, user.email),
+      this.jwtUtil.createRefreshToken(user.id, user.email)
+    ]);
   }
 
   private async userCompareCheck(user: User, password: string) {
