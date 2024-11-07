@@ -1,4 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
+import { now, Document } from 'mongoose';
 
 // you can use class-validator
 @Schema()
@@ -11,10 +12,10 @@ export class User {
   name: string;
   @Prop()
   isWritten: boolean;
-  @Prop()
-  lastLoginDate: boolean;
-  @Prop()
-  createdAt: boolean;
+  @Prop({ default: null })
+  lastLoginDate: Date;
+  @Prop({ default: now() })
+  createdAt: Date;
 }
 
 export type UserDocument = User & Document;

@@ -11,6 +11,11 @@ export class UserRepository {
   ) {}
 
   async save(user: UserCreateDto) {
-    await new this.userModel(user).save();
+    const model = new this.userModel({
+      ...user,
+      password: user.password.readPassword()
+    });
+    const saved = await model.save();
+    console.log(saved);
   }
 }
