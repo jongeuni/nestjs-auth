@@ -1,5 +1,7 @@
 import { JwtService } from '@nestjs/jwt';
+import { Injectable } from '@nestjs/common';
 
+@Injectable()
 export class JwtUtil {
   constructor(private readonly jwtService: JwtService) {}
 
@@ -8,9 +10,6 @@ export class JwtUtil {
   private readonly access_expires_in = '5m';
   private readonly refresh_expires_in = '5m';
 
-  // token check
-
-  // generateToken
   async createAccessToken(id: string, email: string): Promise<string> {
     return this.jwtService.sign(
       {

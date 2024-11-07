@@ -5,7 +5,7 @@ import { UserLoginDto } from './dto/user.login.dto';
 import { Password } from './schema/password';
 import { UserNotExistException } from '../exception/user.not-exist.exception';
 import { UserBadCredentialException } from '../exception/user.bad-credential.exception';
-import { User } from './schema/user.schema';
+import { User, UserDocument } from './schema/user.schema';
 import { JwtUtil } from '../jwt/jwt.util';
 
 @Injectable()
@@ -29,13 +29,18 @@ export class UserService {
       this.jwtUtil.createAccessToken(user.id, user.email),
       this.jwtUtil.createRefreshToken(user.id, user.email)
     ]);
+
+    return {
+      accessToken,
+      refreshToken
+    };
   }
 
-  private async userCompareCheck(user: User, password: string) {
+  private async userCompareCheck(user: UserDocument, password: string) {
     if (user == null) {
       throw new UserNotExistException();
     }
-    if (!(await user.password.comparePassword(password))) {
+    if (await user.readPassword().comparePassword(password)) {
       throw new UserBadCredentialException();
     }
   }

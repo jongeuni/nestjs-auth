@@ -4,6 +4,9 @@ import { UserService } from './user.service';
 import { UserCreateDto } from './dto/user.create.dto';
 import { ApiOperation } from '@nestjs/swagger';
 import { Password } from './schema/password';
+import { UserLoginDto } from './dto/user.login.dto';
+import { UserLoginRq } from './rqrs/rq/user.login.rq';
+import { UserLoginRs } from './rqrs/rs/user.login.rs';
 
 @Controller('user')
 export class UserController {
@@ -18,8 +21,7 @@ export class UserController {
   }
 
   @Post('/login')
-  async login() {
-    // user check;
-    // token 발급.
+  async login(@Body() rq: UserLoginRq): Promise<UserLoginRs> {
+    return this.userService.login(new UserLoginDto(rq.email, rq.password));
   }
 }

@@ -1,6 +1,6 @@
 import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
-import { User, UserDocument } from './schema/user.schema';
+import { User, UserDocument, UserSchema } from './schema/user.schema';
 import { Model } from 'mongoose';
 import { UserCreateDto } from './dto/user.create.dto';
 
@@ -12,7 +12,8 @@ export class UserRepository {
 
   async save(user: UserCreateDto) {
     const model = new this.userModel({
-      ...user
+      ...user,
+      password: user.password.readPassword()
     });
 
     await model.save();

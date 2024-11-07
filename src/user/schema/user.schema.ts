@@ -11,7 +11,7 @@ export class User {
   })
   email: string;
   @Prop()
-  password: Password;
+  password: string;
   @Prop()
   name: string;
   @Prop()
@@ -22,5 +22,14 @@ export class User {
   createdAt: Date;
 }
 
-export type UserDocument = User & Document;
-export const UserSchema = SchemaFactory.createForClass(User);
+export interface UserDocument extends User, Document {
+  readPassword(): Password;
+}
+
+const UserSchema = SchemaFactory.createForClass(User);
+
+UserSchema.methods.readPassword = function (): Password {
+  return Password.fromHashedPassword(this.password);
+};
+
+export { UserSchema };
