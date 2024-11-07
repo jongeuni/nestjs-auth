@@ -9,12 +9,17 @@ import { Password } from './schema/password';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
-  // create
   @Post()
-  @ApiOperation({ summary: '유저 생성 API', description: '유저를 생성한다.' })
-  async registration(@Body() rq: UserCreateRq) {
-    return await this.userService.create(
+  @ApiOperation({ summary: 'register', description: 'create user' })
+  async register(@Body() rq: UserCreateRq) {
+    await this.userService.create(
       new UserCreateDto(rq.email, await Password.create(rq.password), rq.name)
     );
+  }
+
+  @Post('/login')
+  async login() {
+    // user check;
+    // token 발급.
   }
 }

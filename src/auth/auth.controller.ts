@@ -5,8 +5,5 @@ import { AuthService } from './auth.service';
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 
-  @Post('/registration')
-  async registration() {
-    return await this.authService.registration();
-  }
+  // 토큰 재발급
 }

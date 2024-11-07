@@ -12,10 +12,13 @@ export class UserRepository {
 
   async save(user: UserCreateDto) {
     const model = new this.userModel({
-      ...user,
-      password: user.password.readPassword()
+      ...user
     });
-    const saved = await model.save();
-    console.log(saved);
+
+    await model.save();
+  }
+
+  async findByEmail(email: string): Promise<User> {
+    return this.userModel.findOne({ email });
   }
 }

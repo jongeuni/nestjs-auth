@@ -1,5 +1,6 @@
 import * as bcrypt from 'bcrypt';
 
+// Classes are not necessarily used, but security is important.
 export class Password {
   private readonly password: string;
 
@@ -7,6 +8,7 @@ export class Password {
     this.password = hashedPassword;
   }
 
+  // You must encrypt your password when you save it.
   static async create(password: string): Promise<Password> {
     const hashedPassword = await bcrypt.hash(password, 10);
     return new Password(hashedPassword);
