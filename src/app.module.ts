@@ -10,7 +10,7 @@ import { BoardService } from './board/board.service';
 
 @Module({
   // input your mongo db uri
-  // you can use nestjs/config
+  // you can use 'nestjs/config'
   imports: [
     MongooseModule.forRoot('mongodb://localhost:27017/nest-auth'),
     UserModule
