@@ -1,8 +1,11 @@
-import { Controller, Get } from '@nestjs/common';
-import { ApiOperation } from '@nestjs/swagger';
+import { Controller, Get, UseGuards } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { BoardService } from './board.service';
+import { AuthGuard } from '../jwt/auth.guard';
 
+@UseGuards(AuthGuard) // 클래스에 가드 적용
 @Controller('board')
+@ApiBearerAuth('access-token')
 export class BoardController {
   constructor(private readonly boardService: BoardService) {
   }
@@ -11,7 +14,7 @@ export class BoardController {
     summary: 'board-list',
     description: 'read board list - need token'
   })
-  async readList() {
+  async readList(/**@CurrentUser() user: CurrentUserPayload*/) {
     return this.boardService.dummyBoardList();
   }
 }
