@@ -18,7 +18,8 @@ export class JwtUtil {
       },
       {
         secret: this.access_secret_key,
-        expiresIn: this.access_expires_in
+        expiresIn: this.access_expires_in,
+        subject: 'access'
       }
     );
   }
@@ -31,7 +32,8 @@ export class JwtUtil {
       },
       {
         secret: this.refresh_secret_key,
-        expiresIn: this.refresh_expires_in
+        expiresIn: this.refresh_expires_in,
+        subject: 'refresh'
       }
     );
   }

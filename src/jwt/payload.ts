@@ -6,9 +6,13 @@ export interface UserPayload {
 export interface AccessPayload extends UserPayload {
   type: 'access';
   email: string;
-  // role: UserRole;
 }
 
 export interface RefreshPayload extends UserPayload {
   type: 'refresh';
+}
+
+export interface CustomJwtPayload {
+  id: string;
+  email: string;
 }
