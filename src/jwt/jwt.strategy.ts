@@ -1,23 +1,17 @@
-import { Injectable, UnauthorizedException } from '@nestjs/common';
-import * as jwt from 'jsonwebtoken';
-import { AccessPayload, CustomJwtPayload } from './payload';
+import { PassportStrategy } from '@nestjs/passport';
+import { Strategy, ExtractJwt } from 'passport-jwt';
+import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class JwtStrategy {
-  private readonly secret = 'test'; // 비밀키 설정
+export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
+  constructor() {
+    super({
+      jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
+      secretOrKey: 'test'
+    });
+  }
 
-  validateAccessToken(token: string): AccessPayload {
-    try {
-      const payload = jwt.verify(token, this.secret) as CustomJwtPayload; // 디코딩된 데이터를 반환
-      console.log(payload);
-      return {
-        type: 'access',
-        id: payload.id,
-        email: payload.email
-      };
-    } catch (error) {
-      console.log(error.json);
-      throw new UnauthorizedException();
-    }
+  async validate(payload: any) {
+    return { userId: payload.sub, username: payload.username };
   }
 }

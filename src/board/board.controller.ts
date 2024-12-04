@@ -1,10 +1,10 @@
 import { Controller, Get, UseGuards } from '@nestjs/common';
 import { ApiBearerAuth, ApiOperation } from '@nestjs/swagger';
 import { BoardService } from './board.service';
-import { AuthGuard } from '../jwt/auth.guard';
 import { CurrentUser, CurrentUserPayload } from '../auth/auth.current-user';
+import { JwtAuthGuard } from '../jwt/jwt-auth.guard';
 
-@UseGuards(AuthGuard) // 클래스에 가드 적용
+@UseGuards(JwtAuthGuard) // 클래스에 가드 적용
 @Controller('board')
 @ApiBearerAuth('access-token')
 export class BoardController {

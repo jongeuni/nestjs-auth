@@ -1,12 +1,12 @@
 import {
   CanActivate,
   ExecutionContext,
-  Injectable,
   UnauthorizedException
 } from '@nestjs/common';
 import { JwtStrategy } from './jwt.strategy';
 
-@Injectable()
+// @Injectable()
+// Delete because use passport.js
 export class AuthGuard implements CanActivate {
   constructor(private readonly jwtStrategy: JwtStrategy) {}
 

@@ -57,3 +57,14 @@ export class AuthGuard implements CanActivate {
 }
 
 ```
+```ts
+@Module({
+  imports: [],
+  providers: [JwtUtil, JwtService, JwtStrategy],
+  exports: [JwtUtil, JwtService, JwtStrategy]
+})
+export class JwtModule {}
+```
+
+헤더에 이렇게 보내면 인증이 됩니다.
+Authorization: Bearer token~
