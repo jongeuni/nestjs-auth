@@ -15,14 +15,13 @@ This project develops an authentication service using the following technologies
 
 ### Why Is This Project Important?
 1. This can help those who are new to the project and need a guide to the Nest.
-2. You know the basic usage of mongoose, even aggravate.
-3. You will also be able to understand the fundamentals related to authentication.
-4. It is a project with an easy structure.
+2. You will also be able to understand the fundamentals related to authentication.
+3. It is a project with an easy structure.
 
 ### How to Contribute
 Please submit a pull request to the main branch with a clear description of your changes.</br>
 ✅ Improving English grammar is also welcome.</br>
-✅ Adding new features is encourage
+✅ Adding new features is encouraged.
 —> just keep the code straightforward.</br>
 ✅ Feedback for better readability is always appreciated.</br>
 ✅ If you press the star⭐️, it gives you a lot of strength.
