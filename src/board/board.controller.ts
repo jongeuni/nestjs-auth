@@ -8,15 +8,14 @@ import { JwtAuthGuard } from '../jwt/jwt-auth.guard';
 @Controller('board')
 @ApiBearerAuth('access-token')
 export class BoardController {
-  constructor(private readonly boardService: BoardService) {
-  }
+  constructor(private readonly boardService: BoardService) {}
   @Get()
   @ApiOperation({
     summary: 'board-list',
     description: 'read board list - need token'
   })
   async readList(@CurrentUser() user: CurrentUserPayload) {
-    console.log(user);
+    console.log(user + " you can see that it's been certified well");
     return this.boardService.dummyBoardList();
   }
 }

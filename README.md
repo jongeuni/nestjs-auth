@@ -9,7 +9,6 @@ This project develops an authentication service using the following technologies
 ### What Does This Project Do?
 - User Registration
 - Login (Token Issuance)
-- Account Deletion
 - Token Renewal
 - Additional Features ...
 

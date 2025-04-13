@@ -1,5 +1,5 @@
-import {createParamDecorator, ExecutionContext} from "@nestjs/common";
-import mongoose from "mongoose";
+import { createParamDecorator, ExecutionContext } from '@nestjs/common';
+import mongoose from 'mongoose';
 import { AccessPayload } from '../jwt/payload';
 
 export const CurrentUser = createParamDecorator(

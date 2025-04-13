@@ -1,17 +1,18 @@
 #### project structure
 ```
 💬 nestjs-auth
-├─ jwt
-├─ exception
-└─ user (domain)
-   ├─ controller.ts
-   ├─ service.ts
-   ├─ repository.ts
-   ├─ rqrs
-   │  ├─ rq
-   │  └─ rs
-   ├─ dto
-   └─ schema
+├── auth
+├── jwt
+├── exception
+├── swagger
+├── board (domain)
+└── user (domain)
+    ├── controller.ts
+    ├── repository.ts
+    ├── service.ts
+    ├── dto
+    ├── rqrs
+    └── schema
 ```
 
 The project is basically divided by domain. </br>
