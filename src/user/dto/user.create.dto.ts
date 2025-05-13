@@ -12,6 +12,5 @@ export class UserCreateDto {
     readonly email: string,
     readonly password: Password,
     readonly name: string
-  ) {
-  }
+  ) {}
 }

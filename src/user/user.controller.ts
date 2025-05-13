@@ -21,6 +21,7 @@ export class UserController {
   }
 
   @Post('/login')
+  @ApiOperation({ summary: 'login', description: 'token issued' })
   async login(@Body() rq: UserLoginRq): Promise<UserLoginRs> {
     return this.userService.login(new UserLoginDto(rq.email, rq.password));
   }
